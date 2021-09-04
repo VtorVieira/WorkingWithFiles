@@ -8,6 +8,34 @@ namespace WorkingWithFiles
     {
         static void Main(string[] args)
         {
+            // **********************Directory************************
+            string path = @"C:\Users\rx190\Documents\myfolder";
+
+            try
+            {
+                IEnumerable<string> folders = Directory.EnumerateDirectories(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("FOLDERS: ");
+                foreach (string s in folders)
+                {
+                    Console.WriteLine(s);
+                }
+                
+                Console.WriteLine();
+                IEnumerable<string> files = Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories);
+                Console.WriteLine("FILES: ");
+                foreach (string s in files)
+                {
+                    Console.WriteLine(s);
+                }
+
+                Directory.CreateDirectory(path + @"\newfolder");
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            /*
             // **********************Stream Writer************************
             string sourcePath = @"C:\Users\rx190\Documents\file1.txt";
             string targetPath = @"C:\Users\rx190\Documents\file2.txt";
