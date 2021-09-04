@@ -8,8 +8,29 @@ namespace WorkingWithFiles
     {
         static void Main(string[] args)
         {
+            // **********************Stream Writer************************
+            string sourcePath = @"C:\Users\rx190\Documents\file1.txt";
+            string targetPath = @"C:\Users\rx190\Documents\file2.txt";
+
+            try
+            {
+                string[] lines = File.ReadAllLines(sourcePath);
+
+                using (StreamWriter sw = File.AppendText(targetPath))
+                {
+                    foreach(string line in lines)
+                    {
+                        sw.WriteLine(line.ToUpper());
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             // **********************Stream Reader************************
-            string path = @"C:\Users\rx190\Documents\myfolder\file1.txt";
+            /*string path = @"C:\Users\rx190\Documents\myfolder\file1.txt";
 
             try
             {
